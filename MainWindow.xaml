@@ -1,0 +1,1 @@
+<Window x:Class="ExpenseManager.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Expense Manager" Width="1200" Height="760" MinWidth="950" MinHeight="650" WindowStartupLocation="CenterScreen" Background="{DynamicResource BackgroundBrush}"><ContentControl x:Name="Root"/></Window>
