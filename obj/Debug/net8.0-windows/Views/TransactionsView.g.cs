@@ -131,7 +131,7 @@ namespace ExpenseManager.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ExpenseManager;V1.0.0.0;component/views/transactionsview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ExpenseManager;component/views/transactionsview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\TransactionsView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
