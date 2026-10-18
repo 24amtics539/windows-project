@@ -3,7 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Style="{StaticResource PageRoot}">
   <StackPanel>
-    <Grid Margin="0,0,0,22"><StackPanel><TextBlock Text="Reports" Style="{StaticResource Title}"/><TextBlock Text="A clearer view of your financial habits" Style="{StaticResource Subtitle}"/></StackPanel><Button Click="Export_Click" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Right" VerticalAlignment="Center"><StackPanel Orientation="Horizontal"><TextBlock Text="&#xEDE1;" Style="{StaticResource Icon}" Margin="0,0,8,0"/><TextBlock Text="Export report PDF"/></StackPanel></Button></Grid>
+    <Grid Margin="0,0,0,22">
+      <StackPanel>
+        <TextBlock Text="Reports" Style="{StaticResource Title}"/>
+        <TextBlock Text="A clearer view of your financial habits" Style="{StaticResource Subtitle}"/>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+        <Button Click="Export_Click" Style="{StaticResource PrimaryButton}" Margin="0,0,10,0">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="&#xEDE1;" Style="{StaticResource Icon}" Margin="0,0,8,0"/>
+            <TextBlock Text="Export report PDF"/>
+          </StackPanel>
+        </Button>
+        <Button Click="ExportExcel_Click" Style="{StaticResource GhostButton}">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="&#xE9F9;" Style="{StaticResource Icon}" Margin="0,0,8,0"/>
+            <TextBlock Text="Export report Excel"/>
+          </StackPanel>
+        </Button>
+      </StackPanel>
+    </Grid>
     <UniformGrid Columns="3" Margin="0,0,0,8">
       <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="TOTAL INCOME" Style="{StaticResource Label}" Margin="0"/><TextBlock x:Name="TotalIncome" FontSize="25" FontWeight="Bold" Foreground="{DynamicResource SuccessBrush}" Margin="0,14,0,0"/><TextBlock Text="All recorded income" Style="{StaticResource Subtitle}" FontSize="11" Margin="0,4,0,0"/></StackPanel></Border>
       <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="TOTAL EXPENSES" Style="{StaticResource Label}" Margin="0"/><TextBlock x:Name="TotalExpense" FontSize="25" FontWeight="Bold" Foreground="{DynamicResource DangerBrush}" Margin="0,14,0,0"/><TextBlock Text="All recorded expenses" Style="{StaticResource Subtitle}" FontSize="11" Margin="0,4,0,0"/></StackPanel></Border>

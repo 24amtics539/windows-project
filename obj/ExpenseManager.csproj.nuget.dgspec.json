@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\ExpenseManager\\ExpenseManager.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\sem5\\windows project\\ExpenseManager\\ExpenseManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\ExpenseManager\\ExpenseManager.csproj": {
+    "C:\\Users\\Admin\\Desktop\\sem5\\windows project\\ExpenseManager\\ExpenseManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\ExpenseManager\\ExpenseManager.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\sem5\\windows project\\ExpenseManager\\ExpenseManager.csproj",
         "projectName": "ExpenseManager",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\ExpenseManager\\ExpenseManager.csproj",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\sem5\\windows project\\ExpenseManager\\ExpenseManager.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\ExpenseManager\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\sem5\\windows project\\ExpenseManager\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -52,6 +52,10 @@
           "framework": "net8.0-windows7.0",
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[3.5.1, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.10, )"

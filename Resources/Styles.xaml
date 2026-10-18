@@ -66,8 +66,74 @@
       </Setter.Value>
     </Setter>
   </Style>
-  <Style TargetType="DatePicker"><Setter Property="FontSize" Value="13"/><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource InputBorderBrush}"/><Setter Property="Background" Value="{DynamicResource InputBrush}"/><Setter Property="Padding" Value="8,6"/><Setter Property="MinHeight" Value="38"/></Style>
-  <Style TargetType="DatePickerTextBox"><Setter Property="Foreground" Value="{DynamicResource TextBrush}"/><Setter Property="BorderBrush" Value="{DynamicResource InputBorderBrush}"/><Setter Property="Background" Value="{DynamicResource InputBrush}"/></Style>
+  <Style TargetType="DatePickerTextBox">
+    <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="BorderThickness" Value="0"/>
+    <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Setter Property="Padding" Value="6,0,0,0"/>
+  </Style>
+  <Style TargetType="DatePicker">
+    <Setter Property="FontSize" Value="13"/>
+    <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource InputBorderBrush}"/>
+    <Setter Property="BorderThickness" Value="1"/>
+    <Setter Property="Background" Value="{DynamicResource InputBrush}"/>
+    <Setter Property="Padding" Value="4,2"/>
+    <Setter Property="MinHeight" Value="38"/>
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="DatePicker">
+          <Border x:Name="DatePickerBorder"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  CornerRadius="7">
+            <Grid x:Name="PART_Root">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+              </Grid.ColumnDefinitions>
+              <DatePickerTextBox x:Name="PART_TextBox"
+                                 Grid.Column="0"
+                                 HorizontalContentAlignment="Stretch"
+                                 VerticalContentAlignment="Center"
+                                 Focusable="{TemplateBinding Focusable}"/>
+              <Button x:Name="PART_Button"
+                      Grid.Column="1"
+                      Focusable="False"
+                      Width="28"
+                      Height="28"
+                      Margin="0,0,5,0"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Cursor="Hand"
+                      Background="Transparent"
+                      BorderThickness="0">
+                <TextBlock Text="&#xE787;"
+                           Style="{StaticResource Icon}"
+                           FontSize="14"
+                           Foreground="{DynamicResource MutedBrush}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+              </Button>
+              <Popup x:Name="PART_Popup"
+                     PlacementTarget="{Binding ElementName=DatePickerBorder}"
+                     Placement="Bottom"
+                     StaysOpen="False"
+                     AllowsTransparency="True"/>
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+              <Setter TargetName="DatePickerBorder" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+              <Setter TargetName="DatePickerBorder" Property="BorderThickness" Value="1.5"/>
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
 
   <Style x:Key="PrimaryButton" TargetType="Button">
     <Setter Property="Foreground" Value="White"/><Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Padding" Value="18,11"/><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="Cursor" Value="Hand"/>

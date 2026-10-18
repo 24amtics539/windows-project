@@ -55,5 +55,18 @@ public partial class ReportsView : UserControl
         PdfExportService.Export(dialog.FileName, "Expense Manager - Financial Report", lines);
         MessageBox.Show("Your report was exported as a PDF successfully.", "Export complete", MessageBoxButton.OK, MessageBoxImage.Information);
     }
+
+    private void ExportExcel_Click(object sender, RoutedEventArgs e)
+    {
+        if (_data.Count == 0) { MessageBox.Show("There is no report data to export yet.", "Export report", MessageBoxButton.OK, MessageBoxImage.Information); return; }
+        var dialog = new SaveFileDialog { Filter = "Excel Workbooks (*.xlsx)|*.xlsx|CSV files (*.csv)|*.csv", FileName = $"expense-report-{DateTime.Today:yyyy-MM-dd}.xlsx" };
+        if (dialog.ShowDialog() != true) return;
+        var income = _data.Where(x => x.Type == "Income").Sum(x => x.Amount);
+        var expense = _data.Where(x => x.Type == "Expense").Sum(x => x.Amount);
+        var categories = _data.Where(x => x.Type == "Expense").GroupBy(x => x.Category).OrderByDescending(x => x.Sum(t => t.Amount)).Select(g => new KeyValuePair<string, decimal>(g.Key, g.Sum(x => x.Amount))).ToList();
+        ExcelExportService.ExportReport(dialog.FileName, "Expense Manager - Financial Report", income, expense, categories, ReportSummary.Text);
+        MessageBox.Show("Your report was exported as an Excel spreadsheet successfully.", "Export complete", MessageBoxButton.OK, MessageBoxImage.Information);
+    }
+
     private sealed record ReportRow(string Label, decimal Value, double Percent) { public string Display => $"\u20B9{Value:N0}"; }
 }

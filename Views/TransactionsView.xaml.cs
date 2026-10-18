@@ -128,6 +128,16 @@ public partial class TransactionsView : UserControl
         MessageBox.Show("Your transactions were exported as a PDF successfully.", "Export complete", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
+    private void ExportExcel_Click(object sender, RoutedEventArgs e)
+    {
+        var rows = (Table.ItemsSource as IEnumerable<Transaction>)?.ToList() ?? new List<Transaction>();
+        if (rows.Count == 0) { MessageBox.Show("There are no transactions to export with the current filters.", "Export Excel", MessageBoxButton.OK, MessageBoxImage.Information); return; }
+        var dialog = new SaveFileDialog { Filter = "Excel Workbooks (*.xlsx)|*.xlsx|CSV files (*.csv)|*.csv", FileName = $"transactions-{DateTime.Today:yyyy-MM-dd}.xlsx" };
+        if (dialog.ShowDialog() != true) return;
+        ExcelExportService.ExportTransactions(dialog.FileName, "Expense Manager - Transactions", rows);
+        MessageBox.Show("Your transactions were exported as an Excel spreadsheet successfully.", "Export complete", MessageBoxButton.OK, MessageBoxImage.Information);
+    }
+
     private ShellView? FindShell()
     {
         DependencyObject? current = this;
